@@ -64,142 +64,13 @@
                 var dom = document.getElementById("hackerMap");
                 var myChart = echarts.init(dom);
 
-                const drawMap = function(data) {
-                    console.log('68 ' + data.Host);
-                    var myHosName = '';
+                const drawMap = function(resData) {
+                    var hosName = 'Host';
                     option = null;
-                    var geoCoordMap = {
-                        'Amsterdam': [4.895168, 52.370216],
-                        'Athens': [-83.357567, 33.951935],
-                        'Auckland': [174.763332, -36.84846],
-                        'Bangkok': [100.501765, 13.756331],
-                        'Barcelona': [2.173403, 41.385064],
-                        'Beijing': [116.407395, 39.904211],
-                        'Berlin': [13.404954, 52.520007],
-                        '波哥大': [-74.072092, 4.710989],
-                        'Bratislava': [17.107748, 48.148596],
-                        'Brussels': [4.35171, 50.85034],
-                        '布達佩斯': [19.040235, 47.497912],
-                        '布宜諾斯艾利斯': [-58.381559, -34.603684],
-                        'Bucharest': [26.102538, 44.426767],
-                        '卡拉卡斯': [-66.903606, 10.480594],
-                        '芝加哥': [-87.629798, 41.878114],
-                        'Delhi': [77.209021, 28.613939],
-                        'Doha': [51.53104, 25.285447],
-                        '杜拜': [55.270783, 25.204849],
-                        'Dublin': [-6.26031, 53.349805],
-                        'Frankfurt': [8.682127, 50.110922],
-                        'Geneva': [6.143158, 46.204391],
-                        'Helsinki': [24.938379, 60.169856],
-                        'Hong Kong': [114.109497, 22.396428],
-                        'Istanbul': [28.978359, 41.008238],
-                        'Jakarta': [106.845599, -6.208763],
-                        '約翰尼斯堡': [28.047305, -26.204103],
-                        '開羅': [31.235712, 30.04442],
-                        '基輔': [30.5234, 50.4501],
-                        'Copenhagen': [12.568337, 55.676097],
-                        'Kuala Lumpur': [101.686855, 3.139003],
-                        '利馬': [-77.042793, -12.046374],
-                        'Lisbon': [-9.139337, 38.722252],
-                        'Ljubljana': [14.505751, 46.056947],
-                        '倫敦': [-0.127758, 51.507351],
-                        'L A': [-118.243685, 34.052234],
-                        'Luxembourg': [6.129583, 49.815273],
-                        'Lyon': [4.835659, 45.764043],
-                        '馬德里': [-3.70379, 40.416775],
-                        'Milan': [9.185924, 45.465422],
-                        'Manama': [50.58605, 26.228516],
-                        'Manila': [120.984219, 14.599512],
-                        '墨西哥': [-99.133208, 19.432608],
-                        '邁阿密': [-80.19179, 25.76168],
-                        '蒙特婁': [-73.567256, 45.501689],
-                        '莫斯科': [37.6173, 55.755826],
-                        'Mumbai': [72.877656, 19.075984],
-                        'Munich': [11.581981, 48.135125],
-                        '奈洛比': [36.821946, -1.292066],
-                        'New York': [-74.005941, 40.712784],
-                        'Nicosia': [33.382276, 35.185566],
-                        'Oslo': [10.752245, 59.913869],
-                        '巴黎': [2.352222, 48.856614],
-                        'Prague': [14.4378, 50.075538],
-                        'Riga': [24.105186, 56.949649],
-                        'Rio de Janeiro': [-43.172896, -22.906847],
-                        '羅馬': [12.496366, 41.902783],
-                        'Santiago de Chile': [-70.669265, -33.44889],
-                        '聖保羅': [-46.633309, -23.55052],
-                        'Seoul': [126.977969, 37.566535],
-                        'Shanghai': [121.473701, 31.230416],
-                        '新加坡': [103.819836, 1.352083],
-                        'Sofia': [23.321868, 42.697708],
-                        '斯德哥爾摩': [18.068581, 59.329323],
-                        'Sydney': [151.209296, -33.86882],
-                        'Taipei': [121.565418, 25.032969],
-                        'Tallinn': [24.753575, 59.436961],
-                        'Tel Aviv': [34.781768, 32.0853],
-                        'Tokyo': [139.691706, 35.689487],
-                        'Toronto': [-79.383184, 43.653226],
-                        'Vilnius': [25.279651, 54.687156],
-                        'Warsaw': [21.012229, 52.229676],
-                        'Vienna': [16.373819, 48.208174],
-                        'Zurich': [8.541694, 47.376887],
-                        '紐約': [-73.94, 40.67],
-                        '檀香山': [-157.826111, 22.308889],
-                        '西雅圖': [-122.333056, 47.609722],
-                        '溫哥華': [-122.602778, 45.633611],
-                        '安克雷奇': [-149.762097, 61.1919],
-                        '丹佛': [-104.983333, 39.75],
-                        '休斯頓': [-95.366667, 29.75],
-                        '安徽': [117.17, 31.52],
-                        '北京': [116.24, 39.55],
-                        '重庆': [106.54, 29.59],
-                        '福建': [119.18, 26.05],
-                        '甘肃': [103.51, 36.04],
-                        '广东': [113.14, 23.08],
-                        '广西': [108.19, 22.48],
-                        '贵州': [106.42, 26.35],
-                        '海南': [110.20, 20.02],
-                        '河北': [114.30, 38.02],
-                        '河南': [113.40, 34.46],
-                        '黑龙江': [128.36, 45.44],
-                        '湖北': [112.27, 30.15],
-                        '湖南': [112.59, 28.12],
-                        '吉林': [125.19, 43.54],
-                        '江苏': [118.46, 32.03],
-                        '江西': [115.55, 28.40],
-                        '辽宁': [123.25, 41.48],
-                        // '内蒙古': [108.41, 40.48],
-                        // '宁夏回族自治区': [106.16, 38.27],
-                        '青海': [101.48, 36.38],
-                        '山东': [118.00, 36.40],
-                        '山西': [112.33, 37.54],
-                        '陕西': [108.57, 34.17],
-                        '上海': [121.29, 31.14],
-                        '海南': [108.77, 19.10],
-                        '四川': [104.04, 30.40],
-                        '天津': [117.12, 39.02],
-                        '西藏': [91.08, 29.39],
-                        '新疆': [87.36, 43.45],
-                        '云南': [102.42, 25.04],
-                        '浙江': [120.10, 30.16],
-                        '澳门': [115.07, 21.33],
-                        '台湾': [121.21, 23.53]
-                    };
+                    var geoCoordMap = resData.GeoMap;
 
-                    var BJData = [
-                        [{
-                            name: '莫斯科',
-                            value: 100
-                        }, {
-                            name: 'Taipei'
-                        }],
-                        [{
-                            name: '新加坡',
-                            value: 100
-                        }, {
-                            name: 'Taipei'
-                        }]
-
-                    ];
+                    var BJData = resData.BJData;
+                    
                     var convertData = function(data) {
                         var res = [];
                         for (var i = 0; i < data.length; i++) {
@@ -219,11 +90,10 @@
                         }
                         return res;
                     };
-
                     var color = ['#a6c84c', '#ffa022', '#46bee9'];
                     var mySeries = [];
                     [
-                        ['Taipei', BJData]
+                        [hosName, BJData]
                     ].forEach(function(item, i) {
                         mySeries.push({ //线
                             name: item[0],
@@ -279,7 +149,8 @@
                                     name: dataItem[0].name,
                                     fromName: dataItem[0].name,
                                     toName: dataItem[1].name,
-                                    value: geoCoordMap[dataItem[0].name].concat([dataItem[0].value])
+                                    value: geoCoordMap[dataItem[0].name].concat([dataItem[0].value]),
+                                    f: dataItem[0].f
                                 };
                             })
                         }, { //被攻擊的地點
@@ -321,9 +192,17 @@
                             }]
                         });
                     });
-
                     option = {
                         backgroundColor: '#404a59',
+                        visualMap: {
+                            min: 50,
+                            max: 150,
+                            calculable: true,
+                            color: ['#FF3333', 'orange', 'yellow', 'lime', 'aqua'],
+                            textStyle: {
+                                color: '#FFF'
+                            }
+                        },
                         tooltip: {
                             trigger: 'item',
                             formatter: function(params) {
@@ -332,7 +211,7 @@
                                     //   return params.name + '<br>' + params.seriesName + ':' + params.data.value[2] + ' 人次';
                                     return params.name + '<br> 攻擊:' + params.data.value + ' 次';
                                 } else { //if (params.seriesIndex == 1 || params.seriesIndex == 4 || params.seriesIndex == 7) {
-                                    return params.data.fromName + '→' + params.data.toName;
+                                    return params.data.fromName + '  ' + params.data.f + ' Attacks  →' + params.data.toName;
                                 }
                             }
                         },
@@ -356,19 +235,13 @@
                         },
                         series: mySeries
                     };
-
-
                     if (option && typeof option === "object") {
                         myChart.setOption(option, true);
                     }
-
                     window.onresize = function() {
                         myChart.resize();
                     }
                 };
-
-
-
                 $.ajax({
                     type: 'get',
                     contentType: 'application/json', //https://stackoverflow.com/questions/43728951/no-access-control-allow-origin-header-is-present-on-the-requested-resource

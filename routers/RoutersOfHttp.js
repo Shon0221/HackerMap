@@ -1,3 +1,5 @@
+const mssqlTools = require('../src/mssqlTools');
+
 module.exports = function(app) {
 
     // Add headers
@@ -23,9 +25,9 @@ module.exports = function(app) {
     });
 
     app.get('/GetLocation', function(req, res) {
-        console.log('node js ');
-        const msg = { 'Host': 'Ta' };
-        res.json(msg);
-        res.end();
+        mssqlTools.getGeo(reqData => {
+            res.json(reqData);
+            res.end();
+        });
     });
 }

@@ -13,11 +13,6 @@ http.use(express.static(__dirname + '/public'));
 http.use(logger('dev'));
 http.use(bodyParser.text({ defaultCharset: 'utf-8' }));
 http.use(connectDomain());
-// http.use(session({
-//     resave: false, // don't save session if unmodified
-//     saveUninitialized: false, // don't create session until something stored
-//     secret: 'shhhh, very secret'
-// }));
 
 // Added for error: request entity too large --start
 http.use(bodyParser.json({ limit: '64mb' }));
