@@ -15,6 +15,7 @@ exports.getGeo = function(callback){
         conn.close();
         processData(res.recordset, callback);
     }).catch(err => {
+        conn.close();
         console.log(err);
     });
 }
