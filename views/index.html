@@ -70,7 +70,7 @@
                     var geoCoordMap = resData.GeoMap;
 
                     var BJData = resData.BJData;
-                    
+
                     var convertData = function(data) {
                         var res = [];
                         for (var i = 0; i < data.length; i++) {
@@ -206,10 +206,10 @@
                         tooltip: {
                             trigger: 'item',
                             formatter: function(params) {
-                                console.log("325 " + params.data);
+                                // console.log("325 " + params.data);
                                 if (params.seriesIndex == 2) {
                                     //   return params.name + '<br>' + params.seriesName + ':' + params.data.value[2] + ' 人次';
-                                    return params.name + '<br> 攻擊:' + params.data.value + ' 次';
+                                    return params.name; // + '<br> 攻擊:' + params.data.value + ' 次';
                                 } else { //if (params.seriesIndex == 1 || params.seriesIndex == 4 || params.seriesIndex == 7) {
                                     return params.data.fromName + '  ' + params.data.f + ' Attacks  →' + params.data.toName;
                                 }
@@ -245,7 +245,7 @@
                 $.ajax({
                     type: 'get',
                     contentType: 'application/json', //https://stackoverflow.com/questions/43728951/no-access-control-allow-origin-header-is-present-on-the-requested-resource
-                    url: 'http:/localhost:8080/GetLocation',
+                    url: 'http://localhost:8080/GetLocation',
                     success: drawMap
                 });
             </script>

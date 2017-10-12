@@ -1,4 +1,4 @@
-USE Location
+USE [Location]
 GO
 
 IF OBJECT_ID('Get_Geo_Info') IS NOT NULL
@@ -29,6 +29,6 @@ BEGIN
 	GROUP BY Geo.City
 		   , Geo.Latitude
 		   , Geo.Longitude
-	ORDER BY SumT DESC
+	-- ORDER BY SumT DESC
 END			
 GO
